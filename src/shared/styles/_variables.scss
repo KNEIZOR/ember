@@ -1,0 +1,28 @@
+:root {
+  --color-bg: #f1ede5;
+  --color-bg-dark: #171513;
+  --color-surface: #e5d5c2;
+
+  --color-text: #171513;
+  --color-text-light: #f1ede5;
+  --color-text-muted: #746b63;
+
+  --color-accent: #b56a3a;
+  --color-border: rgba(23, 21, 19, 0.16);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', Arial, sans-serif;
+
+  --container-width: 1440px;
+  --container-padding: clamp(1.25rem, 4vw, 4rem);
+
+  --section-padding: clamp(5rem, 10vw, 10rem);
+
+  --transition-fast: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-smooth: 800ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-base: 1;
+  --z-header: 100;
+  --z-overlay: 500;
+  --z-cursor: 1000;
+}
