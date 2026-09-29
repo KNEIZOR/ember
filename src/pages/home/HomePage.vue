@@ -7,6 +7,7 @@ import StorySection from '@/widgets/story/StorySection.vue'
 import CoffeeProcessSection from '@/widgets/coffee-process/CoffeeProcessSection.vue'
 
 import { useSmoothScroll } from '@/shared/composables/useSmoothScroll'
+import BakerySection from '@/widgets/bakery/BakerySection.vue'
 
 useSmoothScroll()
 </script>
@@ -21,6 +22,7 @@ useSmoothScroll()
       <SignatureCoffeeSection />
       <MenuSection />
       <CoffeeProcessSection />
+      <BakerySection />
 
       <section id="visit" class="home-page__placeholder">
         <span>06</span>
