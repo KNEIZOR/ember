@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'home',
       component: () => import('@/pages/home/HomePage.vue'),
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/pages/not-found/NotFoundPage.vue'),
+    },
   ],
 
   scrollBehavior() {

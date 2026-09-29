@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+import { scrollToAnchor } from '@/shared/animations/smoothScroll'
+
 const isMenuOpen = ref(false)
 
 const navigationItems = [
@@ -25,22 +27,50 @@ const toggleMenu = (): void => {
 const closeMenu = (): void => {
   isMenuOpen.value = false
 }
+
+const handleNavigation = (href: string): void => {
+  closeMenu()
+
+  requestAnimationFrame(() => {
+    scrollToAnchor(href)
+  })
+}
+
+const handleLogoClick = (event: MouseEvent): void => {
+  event.preventDefault()
+
+  closeMenu()
+
+  requestAnimationFrame(() => {
+    scrollToAnchor('#top')
+  })
+}
 </script>
 
 <template>
   <header class="header" :class="{ 'header--menu-open': isMenuOpen }">
-    <a class="header__logo" href="/" aria-label="EMBER home" @click="closeMenu"> EMBER </a>
+    <a class="header__logo" href="#top" aria-label="EMBER home" @click="handleLogoClick"> EMBER </a>
 
     <nav class="header__navigation">
-      <a v-for="item in navigationItems" :key="item.href" class="header__link" :href="item.href">
-        <span class="header__link-label">{{ item.label }}</span>
+      <a
+        v-for="item in navigationItems"
+        :key="item.href"
+        class="header__link"
+        :href="item.href"
+        @click.prevent="handleNavigation(item.href)"
+      >
+        <span class="header__link-label">
+          {{ item.label }}
+        </span>
+
         <span class="header__link-line" />
       </a>
     </nav>
 
-    <a class="header__cta" href="#visit">
+    <a class="header__cta" href="#visit" @click.prevent="handleNavigation('#visit')">
       <span>Find us</span>
-      <span class="header__cta-arrow">↗</span>
+
+      <span class="header__cta-arrow"> ↗ </span>
     </a>
 
     <button
@@ -62,7 +92,7 @@ const closeMenu = (): void => {
             :key="item.href"
             class="header__mobile-link"
             :href="item.href"
-            @click="closeMenu"
+            @click.prevent="handleNavigation(item.href)"
           >
             <span class="header__mobile-number"> 0{{ index + 1 }} </span>
 
@@ -70,8 +100,9 @@ const closeMenu = (): void => {
           </a>
         </nav>
 
-        <a class="header__mobile-cta" href="#visit" @click="closeMenu">
+        <a class="header__mobile-cta" href="#visit" @click.prevent="handleNavigation('#visit')">
           Find us
+
           <span>↗</span>
         </a>
       </div>
@@ -164,6 +195,7 @@ const closeMenu = (): void => {
 
 .header__cta-arrow {
   font-size: 1rem;
+
   transition: transform var(--transition-fast);
 }
 

@@ -8,12 +8,14 @@ import CoffeeProcessSection from '@/widgets/coffee-process/CoffeeProcessSection.
 
 import { useSmoothScroll } from '@/shared/composables/useSmoothScroll'
 import BakerySection from '@/widgets/bakery/BakerySection.vue'
+import VisitSection from '@/widgets/visit/VisitSection.vue'
+import FooterSection from '@/widgets/footer/FooterSection.vue'
 
 useSmoothScroll()
 </script>
 
 <template>
-  <div class="home-page">
+  <div id="top" class="home-page">
     <HeaderNavigation />
 
     <main>
@@ -23,11 +25,8 @@ useSmoothScroll()
       <MenuSection />
       <CoffeeProcessSection />
       <BakerySection />
-
-      <section id="visit" class="home-page__placeholder">
-        <span>06</span>
-        <h2>Visit us.</h2>
-      </section>
+      <VisitSection />
+      <FooterSection />
     </main>
   </div>
 </template>
